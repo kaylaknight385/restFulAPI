@@ -1,0 +1,149 @@
+### Welcome to the Commerce Shop API Test File
+### Click "Send Request" above each request to test your endpoints
+### Make sure your server is running first! (npm start)
+
+###############################################
+### CREATE A PRODUCT
+###############################################
+
+### Create product 1 - Electronics
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Gaming Laptop",
+  "description": "High-performance laptop perfect for gaming and streaming",
+  "price": 1299.99,
+  "category": "electronics",
+  "inStock": true,
+  "tags": ["gaming", "laptop", "high-performance"]
+}
+
+### Create product 2 - Electronics (cheaper)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Wireless Mouse",
+  "description": "Ergonomic wireless mouse with long battery life",
+  "price": 29.99,
+  "category": "electronics",
+  "inStock": true,
+  "tags": ["mouse", "wireless", "ergonomic"]
+}
+
+### Create product 3 - Clothing
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Vintage T-Shirt",
+  "description": "Cool vintage band t-shirt",
+  "price": 25.00,
+  "category": "clothing",
+  "inStock": true,
+  "tags": ["vintage", "tshirt", "band"]
+}
+
+### Create product 4 - Electronics (expensive)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "4K Monitor",
+  "description": "Ultra-clear 4K monitor for professional work",
+  "price": 599.99,
+  "category": "electronics",
+  "inStock": false,
+  "tags": ["monitor", "4k", "professional"]
+}
+
+### Create product 5 - Clothing (different price)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Running Shoes",
+  "description": "Comfortable running shoes with great support",
+  "price": 89.99,
+  "category": "clothing",
+  "inStock": true,
+  "tags": ["shoes", "running", "sport"]
+}
+
+###############################################
+### GET ALL PRODUCTS (with optional filters)
+###############################################
+
+### Get all products (no filters)
+GET http://localhost:3000/api/products
+
+### Get all products with pagination (page 1, 2 items per page)
+GET http://localhost:3000/api/products?page=1&limit=2
+
+### Get all electronics
+GET http://localhost:3000/api/products?category=electronics
+
+### Get all clothing
+GET http://localhost:3000/api/products?category=clothing
+
+### Get products priced between $50 and $500
+GET http://localhost:3000/api/products?minPrice=50&maxPrice=500
+
+### Get products with minimum price of $200
+GET http://localhost:3000/api/products?minPrice=200
+
+### Get electronics sorted by price (low to high)
+GET http://localhost:3000/api/products?category=electronics&sortBy=price_asc
+
+### Get all products sorted by price (high to low)
+GET http://localhost:3000/api/products?sortBy=price_desc
+
+### Complex query: get electronics between $50-$1000, sorted by price ascending, page 1 with 5 items
+GET http://localhost:3000/api/products?category=electronics&minPrice=50&maxPrice=1000&sortBy=price_asc&page=1&limit=5
+
+###############################################
+### GET SINGLE PRODUCT BY ID
+###############################################
+
+### Get product by ID (replace with real ID from your database)
+### Copy an _id from one of your created products and replace the id below
+GET http://localhost:3000/api/products/696f1796070f6163a4daafb7
+
+###############################################
+### UPDATE A PRODUCT
+###############################################
+
+### Update product price (replace id with real product id)
+PUT http://localhost:3000/api/products/65a1b2c3d4e5f6g7h8i9j0k1
+Content-Type: application/json
+
+{
+  "price": 149.99,
+  "inStock": true
+}
+
+### Update product name and description
+PUT http://localhost:3000/api/products/65a1b2c3d4e5f6g7h8i9j0k1
+Content-Type: application/json
+
+{
+  "name": "Updated Product Name",
+  "description": "This product has been updated"
+}
+
+###############################################
+### DELETE A PRODUCT
+###############################################
+
+### Delete a product (replace id with real product id)
+DELETE http://localhost:3000/api/products/65a1b2c3d4e5f6g7h8i9j0k1
+
+###############################################
+### TESTING TIPS
+###############################################
+# 1. Run npm start in your terminal first
+# 2. Click "Send Request" above any request to test it
+# 3. The response will show on the right side
+# 4. Create products first, then use their IDs for GET/PUT/DELETE
+# 5. Copy real product IDs from the POST responses
