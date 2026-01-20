@@ -7,6 +7,9 @@ connectDB();
 
 // middleware that tells express to parse incoming json data from requests
 app.use(express.json());
+// connect our product routes 
+const productRoutes = require('./routes/productRoutes');
+app.use('/api/products', productRoutes);
 
 // test for if the server is working
 app.get('/', (req, res) => {
